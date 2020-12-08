@@ -114,6 +114,21 @@ public class TestCase {
 			myObject.setTarget("32103".getBytes());
 			value = myObject.estimation();
 			if((value < 3.9999) || (4.0001 <value)) { System.out.println("IQ for 32103 in 3210321001230123 should be 4.0. But it returns "+value); c++; }
+
+			myObject = new InformationEstimator();
+			myObject.setTarget("".getBytes());
+			value = myObject.estimation();
+			if((value < -0.0001) || (0.0001 <value)) { System.out.println("IQ for \"\" in 3210321001230123 should be 0.0. But it returns "+value); c++; }
+
+			myObject = new InformationEstimator();
+			myObject.setSpace("3210321001230123".getBytes());
+			value = myObject.estimation();
+			if((value < -0.0001) || (0.0001 <value)) { System.out.println("IQ for \"\" in 3210321001230123 should be 0.0. But it returns "+value); c++; }
+
+			myObject = new InformationEstimator();
+			myObject.setTarget("00".getBytes());
+			value = myObject.estimation();
+			if(value < Double.MAX_VALUE-0.0001 || Double.isNaN(value)) { System.out.println("IQ for \"\" in 3210321001230123 should be 0.0. But it returns "+value); c++; }
 		}
 		catch(Exception e) {
 			System.out.println("Exception occurred in InformationEstimator Object");
