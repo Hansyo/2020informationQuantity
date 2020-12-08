@@ -92,20 +92,28 @@ public class TestCase {
 			InformationEstimatorInterface myObject;
 			double value;
 			System.out.println("checking InformationEstimator");
+
 			myObject = new InformationEstimator();
 			myObject.setSpace("3210321001230123".getBytes());
 			myObject.setTarget("0".getBytes());
 			value = myObject.estimation();
 			if((value < 1.9999) || (2.0001 <value)) { System.out.println("IQ for 0 in 3210321001230123 should be 2.0. But it returns "+value); c++; }
+
 			myObject.setTarget("01".getBytes());
 			value = myObject.estimation();
 			if((value < 2.9999) || (3.0001 <value)) { System.out.println("IQ for 01 in 3210321001230123 should be 3.0. But it returns "+value); c++; }
+
 			myObject.setTarget("0123".getBytes());
 			value = myObject.estimation();
 			if((value < 2.9999) || (3.0001 <value)) { System.out.println("IQ for 0123 in 3210321001230123 should be 3.0. But it returns "+value); c++; }
+
 			myObject.setTarget("00".getBytes());
 			value = myObject.estimation();
 			if((value < 3.9999) || (4.0001 <value)) { System.out.println("IQ for 00 in 3210321001230123 should be 4.0. But it returns "+value); c++; }
+
+			myObject.setTarget("32103".getBytes());
+			value = myObject.estimation();
+			if((value < 3.9999) || (4.0001 <value)) { System.out.println("IQ for 32103 in 3210321001230123 should be 4.0. But it returns "+value); c++; }
 		}
 		catch(Exception e) {
 			System.out.println("Exception occurred in InformationEstimator Object");
