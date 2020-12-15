@@ -28,7 +28,7 @@ runFrequencer: Frequencer.class
 runInformationEstimator: InformationEstimator.class
 	java -classpath "../.." s4.B203359/InformationEstimator
 
-runTestCase: TestCase.class
+runTestCase: TestCase.class InformationEstimator.class Frequencer.class
 	java -classpath "../.." s4.B203359/TestCase
 
 
