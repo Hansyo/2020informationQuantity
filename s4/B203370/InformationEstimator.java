@@ -48,8 +48,8 @@ public class InformationEstimator implements InformationEstimatorInterface {
 
 	@Override
 	public double estimation(){
-		if(myTarget == NULL || myTarget.length == 0) return 0;
-		if(mySpace == NULL) return Double.MAX_VALUE;
+		if(myTarget == null || myTarget.length == 0) return 0;
+		if(mySpace == null) return Double.MAX_VALUE;
 
 		double [] memo_iq = new double[myTarget.length + 1]; // memorize iq
 		myFrequencer.setTarget(myTarget);
