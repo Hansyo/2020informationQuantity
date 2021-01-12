@@ -48,19 +48,22 @@ public class InformationEstimator implements InformationEstimatorInterface {
 
 	@Override
 	public double estimation(){
+		if(myTarget == NULL || myTarget.length == 0) return 0;
+		if(mySpace == NULL) return Double.MAX_VALUE;
 
 		double [] memo_iq = new double[myTarget.length + 1]; // memorize iq
 		myFrequencer.setTarget(myTarget);
+		int i = 0;
 
-		for(int i = 0; i < myTarget.length; i++) {
+		for(i = 0; i < myTarget.length; i++) {
 			memo_iq[i] = iq(myFrequencer.subByteFrequency(0, i+1));
 			for (int j = 0; j < i; j++) {
 				double tmp = memo_iq[j] + iq(myFrequencer.subByteFrequency(j+1, i+1));
 				if(tmp < memo_iq[i]) memo_iq[i] = tmp;
 			}
 		}
-		value = memo_iq[myTarget.length - 1];
-		return value;
+		double value = Double.MAX_VALUE;
+		if(i != 0) value = memo_iq[i - 1];
 		return value;
 	}
 
