@@ -60,6 +60,7 @@ public class Frequencer implements FrequencerInterface {
 
 		while (i < mySpace.length && j < mySpace.length) {
 			byte si = mySpace[i], sj = mySpace[j];
+			// 完全辞書順(大文字と小文字を区別しない場合のため、このコメントは残す
 			/*
 				 if (si >= 'A' && si <= 'Z') si = (byte)(si - (byte)'A' + (byte)'a');
 				 if (sj >= 'A' && sj <= 'Z') sj = (byte)(sj - (byte)'A' + (byte)'a');
@@ -199,8 +200,6 @@ public class Frequencer implements FrequencerInterface {
 		//            suffixCompare should return -1.
 		//
 		// ここに比較のコードを書け
-		//
-		//System.out.println("i: " + i);
 		int LOOP_NUM = mySpace.length - suffixArray[i];
 		int p;
 		if (k - j < LOOP_NUM) LOOP_NUM = k - j;
@@ -244,13 +243,6 @@ public class Frequencer implements FrequencerInterface {
 		// if target_start_end is "Ho ", it will return 6.
 		//
 		// ここにコードを記述せよ。
-		/*
-			 int position = 0;
-			 for (position = 0; position < mySpace.length; position++)
-			 if(targetCompare(position, start, end) == 0) return position;
-			 return mySpace.length; // 見つからなかったとき
-			 */
-		///*
 		// 二分探査
 		// 探査結果の保存が必要
 		int find = mySpace.length;
@@ -269,20 +261,6 @@ public class Frequencer implements FrequencerInterface {
 			}
 		}
 		return find;
-		//*/
-		/*
-			 mySpace.length: 3, target: AAAA
-start: 0, end: 4
-0:A
-1:AA
-2:AAA
-
-top: 3
-bottom: 3
-position: 3
-result: -1
-find: 3
-*/
 	}
 
 	private int subByteEndIndex(int start, int end) {
@@ -313,15 +291,6 @@ find: 3
 		// if target_start_end is"i", it will return 9 for "Hi Ho Hi Ho".
 		//
 		//　ここにコードを記述せよ
-		/*
-			 int position;
-			 for (position = mySpace.length - 1; position >= 0; position--)
-			 if(targetCompare(position, start, end) == 0) return position + 1;
-			 return mySpace.length; // 見つからなかったとき
-			 */
-		///*
-		// 二分探査
-		// 探査結果の保存が必要
 		int find = mySpace.length;
 		int top = 0, bottom = mySpace.length;
 		while(top <= bottom) {
@@ -338,19 +307,6 @@ find: 3
 			}
 		}
 		return find;
-		//*/
-		/* length = 4 target: A
-0:A
-1:AA
-2:AAA
-3:AAAA
-
-top: 4
-bottom: 4
-position: 4 == mySpace.length
-result: 0
-find: 4
-*/
 	}
 
 	public static void main(String[] args) {
